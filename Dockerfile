@@ -20,4 +20,4 @@ RUN go install -v ./...
 EXPOSE 80
 
 # Run the executable
-CMD ["shutdown"]
+CMD ["random"]

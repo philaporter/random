@@ -2,19 +2,6 @@
 
 
 [[projects]]
-  branch = "master"
-  digest = "1:88ed09b041cede7ee1d938775b502874e21fa9644a04c242fa1378a4e546d31d"
-  name = "github.com/alexcesaro/log"
-  packages = [
-    ".",
-    "buflog",
-    "golog",
-    "stdlog",
-  ]
-  pruneopts = "UT"
-  revision = "61e686294e58a8698a9e1091268bb4ac1116bd5e"
-
-[[projects]]
   digest = "1:cbec35fe4d5a4fba369a656a8cd65e244ea2c743007d8f6c1ccb132acf9d1296"
   name = "github.com/gorilla/mux"
   packages = ["."]
@@ -24,11 +11,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:920293ff0644f42f587e097b087e69e795a470f0be42be454117e19042f2e676"
+  digest = "1:6b08571850e095ed2c3140543471a5ac8712978dc01985ea173c5340f83a83d8"
   name = "github.com/philaporter/random"
   packages = ["app"]
   pruneopts = "UT"
-  revision = "f461e260c984c30fa4c1757b4a791a538b7850dd"
+  revision = "c5c1abf0ab6cf2492d570e19048e40c4c47a5ffb"
 
 [solve-meta]
   analyzer-name = "dep"

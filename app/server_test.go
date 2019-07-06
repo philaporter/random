@@ -10,7 +10,7 @@ import (
 func TestStart(t *testing.T) {
 	err := make(chan error)
 	t.Run("Test that the server will start", func(t *testing.T) {
-		tick := time.NewTicker(time.Second * 1).C
+		tick := time.NewTicker(time.Second * 16).C
 		go Start(err)
 		select {
 		case <-err:
@@ -19,40 +19,22 @@ func TestStart(t *testing.T) {
 			return
 		}
 	})
-	//t.Run("Test that the duplicate server causes an error for the main server", func(t *testing.T) {
-	//	tick := time.NewTicker(time.Second * 1).C
-	//	go StartDuplicate(err)
-	//	check := false
-	//	for {
-	//		select {
-	//		case <-err:
-	//			return
-	//		case <-tick:
-	//			go Start(err)
-	//			if check {
-	//				t.Error("The error path should have been triggered")
-	//			}
-	//			check = true
-	//		}
-	//	}
-	//})
-	//t.Run("Test that the server causes the duplicate server's error path", func(t *testing.T) {
-	//	tick := time.NewTicker(time.Second * 1).C
-	//	go Start(err)
-	//	check := false
-	//	for {
-	//		select {
-	//		case <-err:
-	//			return
-	//		case <-tick:
-	//			go StartDuplicate(err)
-	//			if check {
-	//				t.Error("The error path should have been triggered")
-	//			}
-	//			check = true
-	//		}
-	//	}
-	//})
+}
+
+func TestToggleHealthBool(t *testing.T) {
+	check.Store(false)
+	t.Run("Test health check toggle", func(t *testing.T) {
+		toggleHealthBool()
+		if check.Load() != true {
+			t.Error("Toggle should have flipped check to true")
+		}
+	})
+	t.Run("Test health check toggle", func(t *testing.T) {
+		toggleHealthBool()
+		if check.Load() != false {
+			t.Error("Toggle should have flipped check to false")
+		}
+	})
 }
 
 func TestHealthHandler(t *testing.T) {

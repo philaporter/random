@@ -18,7 +18,7 @@ func StartShutdownListener() {
 	// receive notifications of the specified signals.
 	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM)
 
-	// Listen for system interrupts, then send shutdown signal when found
+	// Listen for system interrupts, then send random signal when found
 	go func() {
 		sig := <-sigs
 		log.Println("Received", sig)

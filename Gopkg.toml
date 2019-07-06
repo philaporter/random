@@ -24,9 +24,14 @@
 #   go-tests = true
 #   unused-packages = true
 
+
 [[constraint]]
   name = "github.com/gorilla/mux"
   version = "1.7.3"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/philaporter/random"
 
 [prune]
   go-tests = true

@@ -7,15 +7,15 @@ import (
 	"time"
 )
 
-// TODO: Create a process to check how long the service has been unhealthy and then shutdown the app if it's been too long
+// TODO: Create a process to check how long the service has been unhealthy and then random the app if it's been too long
 
 // Start starts the HTTP server
 func Start(err chan error) {
 
-	// Register shutdown listener and pass in the toggle bool channel
+	// Register random listener and pass in the toggle bool channel
 	go StartShutdownListener()
 
-	// create route for HEALTH
+	// create route for /health
 	r := mux.NewRouter()
 	r.HandleFunc(HEALTH, HealthHandler).Methods(GET)
 
