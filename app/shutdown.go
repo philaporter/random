@@ -1,6 +1,7 @@
 package app
 
 import (
+	"log"
 	"os"
 	"os/signal"
 	"syscall"
@@ -20,7 +21,7 @@ func StartShutdownListener() {
 	// Listen for system interrupts, then send shutdown signal when found
 	go func() {
 		sig := <-sigs
-		logger.Warning("Received", sig)
+		log.Println("Received", sig)
 		shutdown <- true
 	}()
 
@@ -30,10 +31,9 @@ func StartShutdownListener() {
 }
 
 func shutdownHandler() {
-	logger.Info("Shutdown process started")
-	logger.Debug("Toggling /HEALTH to 503")
-	timer := time.NewTicker(time.Second * 3).C
+	log.Println("Shutdown process started")
+	timer := time.NewTicker(time.Second * 5).C
 	<-timer
-	logger.Info("Exiting application")
+	log.Println("Exiting application")
 	os.Exit(1)
 }

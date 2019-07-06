@@ -1,22 +1,17 @@
 package app
 
 import (
-	"github.com/alexcesaro/log/stdlog"
 	"sync/atomic"
 )
 
-const GEN_INFO = "INFO_100: Generic information "
-
-const GEN_WARN = "WARN_200: Generic warning "
-
-const GEN_ERROR = "ERROR_300: Generic error "
-
+// HEALTH is a constant for the health URI
 const HEALTH = "/health"
 
+// GET is a constant for GET request handling
 const GET = "GET"
 
+// ADDRESS_PORT is a constant for the hardcoded address and port
 const ADDRESS_PORT = "0.0.0.0:80"
 
+// check is the Value (bool) that will say if the service is healthy
 var check atomic.Value
-
-var logger = stdlog.GetFromFlags()

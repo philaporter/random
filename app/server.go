@@ -2,7 +2,9 @@ package app
 
 import (
 	"github.com/gorilla/mux"
+	"log"
 	"net/http"
+	"time"
 )
 
 // TODO: Create a process to check how long the service has been unhealthy and then shutdown the app if it's been too long
@@ -17,11 +19,19 @@ func Start(err chan error) {
 	r := mux.NewRouter()
 	r.HandleFunc(HEALTH, HealthHandler).Methods(GET)
 
+	// start the server for realz
 	go reallyStart(err, r)
-	logger.Info("Server successfully started")
-	toggleHealthBool()
+
+	// Wait 15 seconds to see if any errors are thrown, then set the service as healthy
+	timer := time.NewTicker(time.Second * 15).C
+	select {
+	case <-timer:
+		log.Println("Server successfully started")
+		toggleHealthBool()
+	}
 }
 
+// reallyStart runs as a go routine and actually starts the http server
 func reallyStart(err chan error, r *mux.Router) {
 	// start server
 	oops := http.ListenAndServe(ADDRESS_PORT, r)
@@ -39,7 +49,7 @@ func toggleHealthBool() {
 
 	// toggling HEALTH and logging the new status
 	check.Store(!check.Load().(bool))
-	logger.Debug("the service is healthy: ", check.Load())
+	log.Println("the service is healthy: ", check.Load())
 }
 
 // HealthHandler checks the HealthCheckBool to return 200 or 503

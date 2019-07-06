@@ -1,19 +1,19 @@
 package main
 
 import (
-	"github.com/alexcesaro/log/stdlog"
-	"shutdown/app"
+	"github.com/philaporter/random/app"
+	"log"
+	"syscall"
 )
 
 func main() {
 	e := make(chan error)
-	log := stdlog.GetFromFlags()
 	go app.Start(e)
-
 	for {
 		select {
 		case err := <-e:
-			log.Error("An error was received on the error channel", err)
+			log.Println("Error received", err)
+			syscall.Kill(syscall.Getpid(), syscall.SIGINT)
 		}
 	}
 }

@@ -22,12 +22,20 @@
   revision = "00bdffe0f3c77e27d2cf6f5c70232a2d3e4d9c15"
   version = "v1.7.3"
 
+[[projects]]
+  branch = "master"
+  digest = "1:920293ff0644f42f587e097b087e69e795a470f0be42be454117e19042f2e676"
+  name = "github.com/philaporter/random"
+  packages = ["app"]
+  pruneopts = "UT"
+  revision = "f461e260c984c30fa4c1757b4a791a538b7850dd"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/alexcesaro/log/stdlog",
     "github.com/gorilla/mux",
+    "github.com/philaporter/random/app",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
