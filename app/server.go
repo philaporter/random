@@ -12,6 +12,8 @@ import (
 // Start starts the HTTP server
 func Start(err chan error) {
 
+	log.Println("Beginning server startup - waiting 15 seconds to toggle /health as status OK")
+
 	// Register random listener and pass in the toggle bool channel
 	go StartShutdownListener()
 
@@ -26,7 +28,7 @@ func Start(err chan error) {
 	timer := time.NewTicker(time.Second * 15).C
 	select {
 	case <-timer:
-		log.Println("Server successfully started")
+		log.Println("Server successfully started - toggling /health to OK")
 		toggleHealthBool()
 	}
 }
