@@ -8,10 +8,10 @@
 ## How to run
 
 * `docker build -t random .`
-* `docker run random`
+* `docker run -p 8080:8080 random`
+* GET to `localhost:8080/health` for health status
 
 OR
 
-* `dep ensure`
-* `go build`
 * `./random`
+* GET to `localhost:8080/health` for health status

@@ -32,6 +32,11 @@ func StartShutdownListener() {
 
 func shutdownHandler() {
 	log.Println("Shutdown process started")
+
+	// Set /health to Service Unavailable
+	toggleHealthBool()
+
+	// Wait 5 seconds before exiting
 	timer := time.NewTicker(time.Second * 5).C
 	<-timer
 	log.Println("Exiting application")

@@ -1,7 +1,6 @@
 package app
 
 import (
-	"fmt"
 	"github.com/gorilla/mux"
 	"log"
 	"net/http"
@@ -57,12 +56,11 @@ func toggleHealthBool() {
 
 // HealthHandler checks the HealthCheckBool to return 200 or 503
 func HealthHandler(writer http.ResponseWriter, request *http.Request) {
-	fmt.Println("INSIDE HANDLER")
 	if check.Load().(bool) {
-		fmt.Println("STATUS OK")
+		log.Println("Health check received: STATUS OK")
 		writer.WriteHeader(http.StatusOK)
 	} else {
-		fmt.Println("STATUS UNAVAILABLE")
+		log.Println("Health check received: STATUS UNAVAILABLE")
 		writer.WriteHeader(http.StatusServiceUnavailable)
 	}
 }
