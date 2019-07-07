@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/philaporter/random/app"
 	"log"
+	"github.com/philaporter/random/app"
 	"syscall"
 )
 

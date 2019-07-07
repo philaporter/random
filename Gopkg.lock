@@ -11,11 +11,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:6b08571850e095ed2c3140543471a5ac8712978dc01985ea173c5340f83a83d8"
+  digest = "1:13f00f0a720a2a063f3a6c8737cd6fc61ba360144739fb0adbd61b092bcf70d9"
   name = "github.com/philaporter/random"
   packages = ["app"]
   pruneopts = "UT"
-  revision = "c5c1abf0ab6cf2492d570e19048e40c4c47a5ffb"
+  revision = "7e3c35fcb4085a2a32dc12f682d30576f1b43ca0"
 
 [solve-meta]
   analyzer-name = "dep"
