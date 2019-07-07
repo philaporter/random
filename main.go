@@ -8,7 +8,7 @@ import (
 
 func main() {
 	e := make(chan error)
-	go app.Start(e)
+	go app.StartServer(e)
 	for {
 		select {
 		case err := <-e:
