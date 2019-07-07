@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func StartShutdownListener() {
+func startShutdownListener() {
 
 	// Channel to listen for os.Signal
 	sigs := make(chan os.Signal, 1)
