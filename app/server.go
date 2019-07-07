@@ -57,6 +57,11 @@ func toggleHealthBool() {
 
 // HealthHandler checks the HealthCheckBool to return 200 or 503
 func HealthHandler(writer http.ResponseWriter, request *http.Request) {
+	// set HEALTH bool to false as default
+	if check.Load() == nil {
+		check.Store(false)
+	}
+
 	if check.Load().(bool) {
 		log.Println("Health check received: STATUS OK")
 		writer.WriteHeader(http.StatusOK)
