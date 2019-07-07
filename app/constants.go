@@ -11,7 +11,7 @@ const HEALTH = "/health"
 const GET = "GET"
 
 // ADDRESS_PORT is a constant for the hardcoded address and port
-const ADDRESS_PORT = "0.0.0.0:8080"
+const ADDRESS_PORT = ":8080"
 
 // check is the Value (bool) that will say if the service is healthy
 var check atomic.Value
