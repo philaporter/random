@@ -9,7 +9,7 @@ import (
 
 // TODO: Create a process to check how long the service has been unhealthy and then random the app if it's been too long
 
-// Start starts the HTTP server
+// StartServer starts the HTTP server
 func StartServer(err chan error) {
 
 	log.Println("Beginning server startup - waiting 15 seconds to toggle /health as status OK")
@@ -29,7 +29,7 @@ func StartServer(err chan error) {
 	}
 }
 
-// reallyStart runs as a go routine and actually starts the http server
+// start runs as a go routine and actually starts the http server
 func start(err chan error) {
 
 	// Create route for /health
@@ -43,7 +43,7 @@ func start(err chan error) {
 	}
 }
 
-// Toggle the HEALTH bool for representing service HEALTH
+// toggleHealthBool Toggle the HEALTH bool for representing service HEALTH
 func toggleHealthBool() {
 	// set HEALTH bool to false as default
 	if check.Load() == nil {
